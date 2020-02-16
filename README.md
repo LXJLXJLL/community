@@ -29,3 +29,8 @@ create table if not exists user
 	gmt_modified bigint
 );
 ```
+
+```bash
+mvn flyway:migrate
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+```
