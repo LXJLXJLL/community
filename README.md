@@ -16,6 +16,7 @@
 [Visual_Paradigm](https://www.visual-paradigm.com)
 [FlyWay](https://flywaydb.org/getstarted/)
 [LomBok](https://projectlombok.org/)
+[PostMan插件](https://chrome.google.com/webstore/detail/tabbed-postman-rest-clien/coohjcphdfgbiolnekdpbcijmhambjff)
 
 ## 脚本
 ``` sql
@@ -37,7 +38,7 @@ create table question
     description   text          null,
     gmt_create    bigint        null,
     gmt_modified  bigint        null,
-    createId      int           null,
+    creator      int           null,
     comment_count int default 0 null,
     view_count    int default 0 null,
     like_count    int default 0 null,

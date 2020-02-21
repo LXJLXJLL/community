@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class QuestionDTO {
-    private Integer id;
+    private Long id;
     //标题
     private String title;
     //描述
@@ -17,7 +17,7 @@ public class QuestionDTO {
     //格林时间
     private Long gmtModified;
     //创建人
-    private Integer createId;
+    private Long creator;
     //浏览数
     private Integer viewCount;
     //回复数

@@ -1,14 +1,12 @@
 package com.lxj.springboot.springboot.exception;
 
-public class CustomizeException  extends RuntimeException{
+public class CustomizeException extends RuntimeException {
     private String message;
+    private Integer code;
 
     public CustomizeException(ICustomizeErrorCode errorCode) {
+        this.code = errorCode.getCode();
         this.message = errorCode.getMessage();
-    }
-
-    public CustomizeException(String message) {
-        this.message = message;
     }
 
 
@@ -17,4 +15,7 @@ public class CustomizeException  extends RuntimeException{
         return message;
     }
 
+    public Integer getCode() {
+        return code;
+    }
 }
