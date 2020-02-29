@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/community.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/layui/layui.all.js"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
 </head>
@@ -13,7 +15,7 @@
 <div th:insert="navigation :: nav"></div>
 <div class="container-fluid main">
     <div class="row">
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 toptop2">
             <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
             <hr>
 
@@ -53,8 +55,9 @@
 
             </form>
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 toptop">
             <h3>问题发起指南</h3>
+            <br>
             ●问题标题：请用精简的语言发布您的问题，不超过25个字<br>
             ●问题补充：详细补充您的问题内容，并确保问题描述清晰直观，并提供一些相关资料<br>
             ●选择标签：选择一个或多个合适的标签，用逗号隔开，每个标签不超过10个字<br>
