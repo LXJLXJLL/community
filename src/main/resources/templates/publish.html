@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>发布 - Java社区</title>
+    <title>提问 - Java社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
@@ -10,6 +10,7 @@
     <script src="/layui/layui.all.js"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/publish.js" type="application/javascript"></script>
 </head>
 <body>
 <div th:insert="navigation :: nav"></div>
@@ -34,7 +35,27 @@
                 <div class="form-group">
                     <label for="tag">添加标签：</label>
                     <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag"
-                           placeholder="输入标签,以,号分割">
+                           placeholder="输入标签,以,号分割"
+                           onclick="showSelectTag()">
+                    <div id="select_tag" class="publish-tag-tag">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" th:each="selectCategory,selectCategoryStat : ${tags}"
+                                th:class="${selectCategoryStat.first ? 'active' : ''}">
+                                <a th:href="'#'+${selectCategory.categoryName}" aria-controls="home" role="tab"
+                                   data-toggle="tab" th:text="${selectCategory.categoryName}"></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" th:id="${selectCategory.categoryName}"
+                                 th:each="selectCategory : ${tags}"
+                                 th:class="${selectCategoryStat.first ? 'active tab-pane' : 'tab-pane'}">
+                                <span class="label label-info" th:each="selectTag : ${selectCategory.tags}">
+                                    <span class="layui-icon layui-icon-note" onclick="selectTags(this)"
+                                          th:data-tag="${selectTag}" th:text="${selectTag}"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="container-fluid main">
                     <div class="row">
@@ -56,7 +77,7 @@
             </form>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 toptop">
-            <h3>问题发起指南</h3>
+            <h3><label>问题发起指南</label></h3>
             <br>
             ●问题标题：请用精简的语言发布您的问题，不超过25个字<br>
             ●问题补充：详细补充您的问题内容，并确保问题描述清晰直观，并提供一些相关资料<br>
