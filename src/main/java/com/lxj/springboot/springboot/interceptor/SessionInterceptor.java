@@ -3,6 +3,7 @@ package com.lxj.springboot.springboot.interceptor;
 import com.lxj.springboot.springboot.mapper.UserMapper;
 import com.lxj.springboot.springboot.model.User;
 import com.lxj.springboot.springboot.model.UserExample;
+import com.lxj.springboot.springboot.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,6 +19,10 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private NotificationService notificationService;
+
 
     /**
      * 运行前加载
@@ -40,6 +45,8 @@ public class SessionInterceptor implements HandlerInterceptor {
                     List<User> userList = userMapper.selectByExample(userExample);
                     if (userList.size() > 0) {
                         request.getSession().setAttribute("user", userList.get(0));
+                        Long unreadCount = notificationService.unreadCount(Long.valueOf(userList.get(0).getAccountId()));
+                        request.getSession().setAttribute("unreadCount",unreadCount);
                     }
                     break;
                 }
