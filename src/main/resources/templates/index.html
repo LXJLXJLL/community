@@ -1,31 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Java社区</title>
+    <title>LI的神秘博客</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/community.css">
     <link rel="stylesheet" href="/layui/css/layui.css">
-    <script src="/layui/layui.all.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/layui/layui.all.js"></script>
 </head>
-<script type="application/javascript">
-    window.onload = function () {
-        var closable = window.localStorage.getItem("closable");
-        if (closable == "true") {
-            window.close();
-            window.localStorage.removeItem("closable");
-        }
-    }
-</script>
 <body>
 <div th:insert="navigation :: nav"></div>
-<div class="container-fluid main">
+
+<div class="container-fluid main container">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-send" style="margin-top: 5px" aria-hidden="true"></span>发现</h2>
+            <h3 style="margin: 10px 0;"><span class="layui-icon layui-icon-template-1" aria-hidden="true"></span>发现</h3>
             <hr>
             <div class="media" th:each="question :${pagination.data}">
                 <div class="media-left">
@@ -35,10 +27,9 @@
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        <a th:href="@{'question/'+${question.id}}" th:text="${question.title}"></a>
+                        <a style="color: #00AAC7" th:href="@{'question/'+${question.id}}" th:text="${question.title}"></a>
                     </h4>
-                    <span th:text="${question.description}"></span>
-                    <br>
+                   <!-- <span th:text="${question.description}"></span>-->
                     <span class="text-desc"><span th:text="${question.user.name}"></span>发起了问题 • <span
                             th:text="${question.commentCount}"></span>个评论 • <span
                             th:text="${question.viewCount}"></span> 次浏览  • <span
@@ -77,10 +68,17 @@
                 </ul>
             </nav>
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h3 style="margin-top: 5px">热门话题</h3>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 main-right">
+            <div class="site-host">
+                <div class="siteFont">站长:</div>
+                <a href="https://weibo.com/5502100179" title="新浪微博"><img class="adminicon" src="/images/weibo.jpg"></a>
+                <a href="https://user.qzone.qq.com/877061723" title="QQ空间"><img class="adminicon" src="/images/kongjian.png"></a>
+                <a href="https://github.com/LXJLXJLL" title="Github"><img class="adminicon" src="/images/GitHub.png"></a>
+            </div>
         </div>
     </div>
 </div>
+
+<div th:replace="navigation :: footer"></div>
 </body>
 </html>
