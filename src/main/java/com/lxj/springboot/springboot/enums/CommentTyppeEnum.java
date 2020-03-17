@@ -9,7 +9,7 @@ public enum CommentTyppeEnum {
 
     public static boolean isExist(Integer type) {
         for (CommentTyppeEnum value : CommentTyppeEnum.values()) {
-            if (value.getType() == type) {
+            if (value.getType().equals(type)) {
                 return true;
             }
         }
